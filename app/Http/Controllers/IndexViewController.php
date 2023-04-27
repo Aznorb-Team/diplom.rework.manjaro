@@ -9,8 +9,12 @@ class IndexViewController extends Controller
 {
     public function __invoke()
     {
+        
         if(Auth::check())
-            switch(auth()->user()->role[0]->id){
+        {
+            $roles = auth()->user()->role->sortBy('id');
+
+            switch($roles[0]->id){
                 case 0: 
                     return redirect('/admin');
                     break;
@@ -21,6 +25,7 @@ class IndexViewController extends Controller
                     return redirect('/user');
                     break;
             }
+        }
         else
             return redirect('log_in');
     }

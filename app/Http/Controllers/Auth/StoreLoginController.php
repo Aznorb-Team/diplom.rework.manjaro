@@ -14,8 +14,9 @@ class StoreLoginController extends Controller
             'password' => $request->password,
         ])){
             //dd(auth()->user()->role_title);
-            return redirect('admin');    
-        }
-        //return redirect()->back()->with('error', $request->password);
+            return redirect('admin');   
+            //return redirect('admin');     
+        }  
+        return redirect()->back()->with('error', $request->password);
     }
 }

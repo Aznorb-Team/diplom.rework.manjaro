@@ -39,8 +39,8 @@
                             <td class="sorting_1">{{$user->id}} <input name="user[{{$user->id}}][id]" value="{{$user->id}}" hidden></td>
                             <td>{{$user->surname}} {{$user->name}} {{$user->patronymic}}</td>
                             <td>{{$user->email}}</td>
-                            <td>
-                              <div class="mb-3">
+                            <td style="max-width: 150px;">
+                              {{-- <div class="mb-3">
                                   <select class="form-select input-air-primary w-auto" id="mode" name="user[{{$user->id}}][role_id]" required>
                                       @foreach($roles as $role)
                                           @if($user->role->id == $role->id)
@@ -57,10 +57,22 @@
                               </div>
                               <a href="#">
                                 Добавить
-                              </a>
-                            </td>
-                            <td>
+                              </a> --}}
                               <div class="mb-3">
+                                    <select class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" name="authors[]" required>
+                                        @foreach($roles as $role)
+                                            @if($user->role->id == $role->id)
+                                                <option value="{{$role->id}}" selected>{{$role->title}}</option>
+                                            @else
+                                            <option value="{{$role->id}}">{{$role->title}}</option>
+                                            @endif    
+                                        @endforeach
+                                    </select>
+                                    {{-- <span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 1402px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> --}}
+                                  </div>
+                            </td>
+                            <td style="max-width: 150px;">
+                              {{-- <div class="mb-3">
                                 <select class="form-select input-air-primary w-auto" id="mode" name="user[{{$user->id}}][direction_id]" required>
                                     <option value="-1" selected></option>
                                     @foreach($directions as $direction)
@@ -77,7 +89,19 @@
                             </div>
                             <a href="#">
                               Добавить
-                            </a>
+                            </a> --}}
+                            <div class="mb-3">
+                                    <select class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" name="authors[]" required>
+                                        @foreach($directions as $direction)
+                                            @if($user->direction == $direction->id)
+                                                <option value="{{$direction->id}}" selected>{{$direction->title}}</option>
+                                            @else
+                                            <option value="{{$direction->id}}">{{$direction->title}}</option>
+                                            @endif    
+                                        @endforeach
+                                    </select>
+                                    {{-- <span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 1402px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> --}}
+                                  </div>
                             </td>
                           </tr>
                         @endforeach

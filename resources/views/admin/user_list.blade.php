@@ -61,7 +61,8 @@
                               <div class="mb-3">
                                     <select class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" name="authors[]" required>
                                         @foreach($roles as $role)
-                                            @if($user->role->id == $role->id)
+                                            {{-- @if($user->role->id == $role->id) --}}
+                                            @if($user->role->contains($role->id))
                                                 <option value="{{$role->id}}" selected>{{$role->title}}</option>
                                             @else
                                             <option value="{{$role->id}}">{{$role->title}}</option>
@@ -93,7 +94,8 @@
                             <div class="mb-3">
                                     <select class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible" multiple="" tabindex="-1" aria-hidden="true" name="authors[]" required>
                                         @foreach($directions as $direction)
-                                            @if($user->direction == $direction->id)
+                                            {{-- @if($user->direction == $direction->id) --}}
+                                            @if($user->direction->contains($direction->id))
                                                 <option value="{{$direction->id}}" selected>{{$direction->title}}</option>
                                             @else
                                             <option value="{{$direction->id}}">{{$direction->title}}</option>

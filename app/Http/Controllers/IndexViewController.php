@@ -10,7 +10,7 @@ class IndexViewController extends Controller
     public function __invoke()
     {
         if(Auth::check())
-            switch(auth()->user()->role_id){
+            switch(auth()->user()->role[0]->id){
                 case 0: 
                     return redirect('/admin');
                     break;

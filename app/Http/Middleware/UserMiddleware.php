@@ -17,7 +17,8 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->role_id >= 1){
+        if(Auth::check() ){
+            // && Auth::user()->role->contains(1)
             return $next($request);
         }
         return redirect('/');

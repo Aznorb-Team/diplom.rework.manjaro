@@ -25,8 +25,8 @@ class User extends Authenticatable
         'patronymic',
         'email',
         'password',
-        'role_id',
-        'direction_id'
+        // 'role_id',
+        // 'direction_id'
     ];
 
     /**
@@ -59,15 +59,15 @@ class User extends Authenticatable
         return $this->belongsTo(Application::class, 'employee_id');
     }
 
-    public function role_id()
-    {
-        return $this->hasOne(Role::class, 'id');
-    }
+    // public function role_id()
+    // {
+    //     return $this->hasOne(Role::class, 'id');
+    // }
     public function role()
     {
-        return $this->hasOne(Role::class, 'id', 'role_id');
+        return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
     }
     public function direction(){
-        return $this->hasOne(Direction::class, 'id', 'direction_id');
+        return $this->belongsToMany(Direction::class, 'users_directions', 'user_id', 'direction_id');
     }
 }

@@ -10,8 +10,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Список пользователей</h5>
-                            <span>На данной панели можно увидеть список данных всех пользователей нашей системы, с которыми
+                            <h5>Список направлений</h5>
+                            <span>На данной панели можно увидеть список данных всех направлений нашей системы, с которыми
                                 можно взаимодействовать.</span>
                         </div>
                         <div class="card-body">
@@ -62,8 +62,8 @@
                                 aria-labelledby="exampleModalCenter" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <form id="new_direction_form" method="post" action="{{ route('direction.add') }}">
-                                            @csrf
+                                        <form id="new_direction_form" method="POST">
+                                            {{ csrf_field() }}
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Добавить направление</h5>
                                                 <button class="btn-close" type="button" data-bs-dismiss="modal"
@@ -109,35 +109,32 @@
     </div>
     </div>
     <script>
-        document.getElementById('add_direction_button').onclick = function() {
+        $(document).ready(function() {
+            $('#new_direction_form').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('direction.add') }}",
+                    data: $(this).serialize(),
+                    headers: {
 
-        };
-        // $(document).ready(function() {
-        // $('#new_direction_form').submit(function(e) {
-        //     e.preventDefault();
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "{{ route('direction.add') }}",
-        //         data: $(this).serialize(),
-        //         headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 
-        //         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
 
-        //         },
+                    success: function(data) {
 
-        //         success: function (data) {
+                        //toastr.success("Изменения сохранены!");
 
-        //           alert("Success");
+                    },
 
-        //         },
+                    error: function(msg) {
 
-        //         error: function (msg) {
+                        //toastr.error("Ошибка сохранения!");
 
-        //           alert("Error");
-
-        //         }
-        //    });
-        //  });
-        // });
+                    }
+                });
+            });
+        });
     </script>
 @endsection

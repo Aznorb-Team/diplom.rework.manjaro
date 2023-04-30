@@ -15,7 +15,7 @@ class CreateDirectionController extends Controller
             'title' => $request->new_direction,
         ]);
         $direction->save();
-
-        return redirect("admin/direction.list");
+        
+        return response()->json(['success'=>'Form is successfully submitted!']);
     }
 }

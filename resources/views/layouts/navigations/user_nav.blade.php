@@ -131,7 +131,7 @@
                                     </ul>
                                 </li>
                             @endif
-                            @if (auth()->user()->role->contains(2))
+                            @if (auth()->user()->role->contains(2) || auth()->user()->role->contains(3) || auth()->user()->role->contains(4) || auth()->user()->role->contains(5) || auth()->user()->role->contains(6) || auth()->user()->role->contains(7))
                                 <li class="sidebar-main-title">
                                     <div>
                                         <h6>Панель эксперта</h6>

@@ -12,7 +12,7 @@ class SuccessController extends Controller
     public function __invoke(Request $request, $id){
         $application = Application::where('id','=',$id)->first();
         //dd($request);
-        $folder = "application/user-{$application->user_id}";
+        $folder = "public/application/user-{$application->user_id}";
         $link = "";
         if($request->hasFile('antiplagiat')){
             $link = $request->file('antiplagiat')->store($folder);

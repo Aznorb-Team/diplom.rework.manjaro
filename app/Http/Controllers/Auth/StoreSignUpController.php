@@ -20,7 +20,7 @@ class StoreSignUpController extends Controller
             'role_id' => 1,
             'direction_id' => 0,
         ]);
-
+        $user->role()->attach(1);
         Auth::login($user);
         return redirect('/');
     }

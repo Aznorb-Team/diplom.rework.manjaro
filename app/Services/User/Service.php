@@ -11,7 +11,7 @@ use App\Models\Teaching_Material;
 class Service{
     public function add_application($request){
         $user = auth()->user();
-        $folder = "application/user-{$user->id}";
+        $folder = "public/application/user-{$user->id}";
         $fileTech = '';
         $recense = collect([]);
         $kafedra = '';

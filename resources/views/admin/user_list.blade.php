@@ -79,7 +79,7 @@
                                                                 <select
                                                                     class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible select2-custom"
                                                                     multiple="" tabindex="-1" aria-hidden="true"
-                                                                    name="authors[]" required>
+                                                                    name="roles[{{$user->id}}][]" required>
                                                                     @foreach ($roles as $role)
                                                                         {{-- @if ($user->role->id == $role->id) --}}
                                                                         @if ($user->role->contains($role->id))
@@ -117,7 +117,7 @@
                                                                 <select
                                                                     class="form-select input-air-primary js-example-basic-multiple select2-hidden-accessible"
                                                                     multiple="" tabindex="-1" aria-hidden="true"
-                                                                    name="authors[]" required>
+                                                                    name="directions[{{$user->id}}][]">
                                                                     @foreach ($directions as $direction)
                                                                         {{-- @if ($user->direction == $direction->id) --}}
                                                                         @if ($user->direction->contains($direction->id))

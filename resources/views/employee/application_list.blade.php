@@ -34,7 +34,32 @@
                           <tr role="row" class="odd">
                             <td class="sorting_1">{{$application->id}}</td>
                             <td>{{$application->title}}</td>
-                            @switch(auth()->user()->role_id)
+                            @if(auth()->user()->role->contains(2))
+                              <td><a href="{{route('antiplagiat.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+                            @if(auth()->user()->role->contains(3))
+                              <td><a href="{{route('expert_ris.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+                            @if(auth()->user()->role->contains(4))
+                              <td><a href="{{route('session_ris.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+                            @if(auth()->user()->role->contains(5))
+                              <td><a href="{{route('expert_ums.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+                            @if(auth()->user()->role->contains(6))
+                              <td><a href="{{route('session_ums.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+                            @if(auth()->user()->role->contains(7))
+                              <td><a href="#"><button class="btn @if($application->employee_id == auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id != auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                            @endif
+
+
+                            {{-- @switch(auth()->user()->role_id)
                                 @case(2)
                                     <td><a href="{{route('antiplagiat.check', ['id' => $application->id])}}"><button class="btn btn-primary" type="button">Взять в работу</button></a></td>
                                     @break
@@ -55,7 +80,7 @@
                                     @break
                                 @default
                                     
-                            @endswitch
+                            @endswitch --}}
                             
                           </tr>
                         @endforeach

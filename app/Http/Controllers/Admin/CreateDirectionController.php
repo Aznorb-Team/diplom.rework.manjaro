@@ -16,6 +16,7 @@ class CreateDirectionController extends Controller
         ]);
         $direction->save();
         
-        return response()->json(['success'=>'Form is successfully submitted!']);
+        return redirect()->back();
+        // return response()->json(['success'=>'Form is successfully submitted!']);
     }
 }

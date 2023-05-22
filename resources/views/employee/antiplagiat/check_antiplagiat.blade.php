@@ -112,7 +112,7 @@
 <script>
     document.getElementById('view_teach_mat').onclick = function() {
         let link = document.getElementById('link_teach_mat');
-        window.open('http://diplom.rework/storage/'+link.value).focus();
+        window.open('http://127.0.0.1:8000/storage/'+link.value.substr(7)).focus();
     };
     const download = (path, filename) => {
         // Create a new link
@@ -131,7 +131,7 @@
     }; 
     document.getElementById('download').onclick = function() {
         let link = document.getElementById('link_teach_mat');
-        download('http://diplom.rework/storage/'+link.value, 'met_mat.doc');
+        download('http://127.0.0.1:8000/storage/'+link.value.substr(7), 'met_mat.doc');
     };
 </script>
 @endsection

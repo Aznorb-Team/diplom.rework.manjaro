@@ -44,6 +44,8 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/application.list', 'App\Http\Controllers\User\ApplicationListController')->name('application.list');
         Route::get('/form_add_application', 'App\Http\Controllers\User\ViewFormAddApplicationController')->name('form_add_application');
         Route::post('/add_application', 'App\Http\Controllers\User\AddApplicationController')->name('add_application');
+        Route::get('edit_application/{id}', 'App\Http\Controllers\User\EditApplicationController')->name('edit_application');
+        Route::get('/delete_application/{id}', 'App\Http\Controllers\User\DeleteApplicationController')->name('delete_application');
 
         //antiplagiat
         Route::get('/antiplagiat.application_list', 'App\Http\Controllers\Employee\ApplicationListController')->name('antiplagiat.application_list');

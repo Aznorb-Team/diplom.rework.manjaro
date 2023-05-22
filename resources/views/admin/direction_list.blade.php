@@ -62,7 +62,7 @@
                                 aria-labelledby="exampleModalCenter" style="display: none;" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <form id="new_direction_form" method="POST">
+                                        <form id="new_direction_form" method="POST" action="{{route('direction.add')}}">
                                             {{ csrf_field() }}
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Добавить направление</h5>
@@ -108,7 +108,7 @@
     </footer>
     </div>
     </div>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#new_direction_form').submit(function(e) {
                 e.preventDefault();
@@ -136,5 +136,5 @@
                 });
             });
         });
-    </script>
+    </script> --}}
 @endsection

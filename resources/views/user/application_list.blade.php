@@ -41,8 +41,8 @@
                             <td>{{$application->status_application->title}}</td>
                             <td>{{$application->status_work->title}}</td>
                             <td>
-                              <a href="#"><button class="btn btn-warning" type="button">Редактировать</button></a>
-                              <a href="#"><button class="btn btn-danger" type="button">Отменить</button></a>
+                              <a href="{{ route('edit_application', ['id' => $application->id]) }}"><button class="btn btn-warning" type="button">Редактировать</button></a>
+                              <a href="{{ route('delete_application', ['id' => $application->id]) }}"><button class="btn btn-danger" type="button">Отменить</button></a>
                             </td>
                           </tr>
                         @endforeach
@@ -70,4 +70,7 @@
   </footer>
 </div>
 </div>
+<script>
+
+</script>
 @endsection

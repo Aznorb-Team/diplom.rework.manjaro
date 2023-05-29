@@ -8,6 +8,7 @@ use App\Models\Application;
 use App\Models\Review;
 use App\Models\Teaching_Material;
 
+
 class Service{
     public function add_application($request){
         $user = auth()->user();

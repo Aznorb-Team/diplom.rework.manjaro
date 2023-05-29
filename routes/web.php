@@ -45,7 +45,10 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/form_add_application', 'App\Http\Controllers\User\ViewFormAddApplicationController')->name('form_add_application');
         Route::post('/add_application', 'App\Http\Controllers\User\AddApplicationController')->name('add_application');
         Route::get('edit_application/{id}', 'App\Http\Controllers\User\EditApplicationController')->name('edit_application');
+        Route::post('save_application/{id}', 'App\Http\Controllers\User\SaveApplicationController')->name('save_application');
         Route::get('/delete_application/{id}', 'App\Http\Controllers\User\DeleteApplicationController')->name('delete_application');
+
+        Route::post('phpword_test', 'App\Http\Controllers\Test\PhpWordGenerateController')->name('phpword_test');
 
         //antiplagiat
         Route::get('/antiplagiat.application_list', 'App\Http\Controllers\Employee\ApplicationListController')->name('antiplagiat.application_list');

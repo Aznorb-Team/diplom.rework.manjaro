@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('applications', function($table) {
-            $table->integer('ris_statement_id');
+            $table->integer('anti_plagiarism_statement_id')->nullable();
+            $table->integer('ris_statement_id')->nullable();
+            $table->integer('ums_statement_id')->nullable();
+            $table->integer('publish_statement_id')->nullable();
         });
     }
 
@@ -26,7 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('applications', function($table) {
+            $table->dropColumn('anti_plagiarism_statement_id');
             $table->dropColumn('ris_statement_id');
+            $table->dropColumn('ums_statement_id');
+            $table->dropColumn('publish_statement_id');
         });
     }
 };

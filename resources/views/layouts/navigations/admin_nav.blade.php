@@ -74,7 +74,16 @@
           <div class="badge-bottom"></div><a href="{{route('admin')}}">
             <h6 class="mt-3 f-14 f-w-600">{{auth()->user()->name}}</h6></a>
           {{-- <p class="mb-0 font-roboto">{{auth()->user()->role->title}}</p> --}}
-          <p class="mb-0 font-roboto">{{auth()->user()->role[0]->title}}</p>
+          <p class="example-popover" type="button" data-bs-trigger="hover" data-container="body" data-bs-toggle="popover" data-bs-placement="bottom" title="" data-offset="-20px -20px" 
+          data-bs-content="@foreach(auth()->user()->role as $role)
+          {{$role->title}}; 
+          @endforeach" 
+          data-bs-original-title="Роли">
+          {{auth()->user()->role[0]->title}}
+          </p>
+          <p lass="mb-0 font-roboto" placeholder="LFLFLF
+          
+          "></p>
           {{-- <ul>
             <li><span><span class="counter">19.8</span>k</span>
               <p>Follow</p>
@@ -130,5 +139,6 @@
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
           </div>
         </nav>
+        
       </header>
       

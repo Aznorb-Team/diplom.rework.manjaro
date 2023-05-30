@@ -26,6 +26,8 @@
                         <tr role="row">
                           <th class="sorting_asc" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" >№</th>
                           <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Наименование</th>
+                          <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Этап</th>
+                          <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Автор</th>
                           <th class="sorting" tabindex="0" aria-controls="basic-1" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" >Действия</th>
                         </tr>
                       </thead>
@@ -34,6 +36,12 @@
                           <tr role="row" class="odd">
                             <td class="sorting_1">{{$application->id}}</td>
                             <td>{{$application->title}}</td>
+                            <td>{{$application->status_application->title}}</td>
+                            @if($application->user_id === auth()->user()->id)
+                              <td>Вы</td>
+                            @else
+                              <td>{{$application->user->surname}} {{$application->user->name}} @if($application->user->patronymic != null) {{$application->user->patronymic}} @endif</td>
+                            @endif
                             @if(auth()->user()->role->contains(2))
                               <td><a href="{{route('antiplagiat.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
                             @endif
@@ -86,7 +94,7 @@
                         @endforeach
                       </tbody>
                     </table>
-                    {{ $applications->links() }}
+                    {{-- {{ $applications->links() }} --}}
                   </div>
                 </div>
               </div>

@@ -37,7 +37,7 @@
                           <tr role="row" class="odd">
                             <td class="sorting_1">{{$application->id}}</td>
                             <td>{{$application->title}}</td>
-                            <td>{{$application->employee}}</td>
+                            <td>{{$application->employee->surname}} {{$application->employee->name}}</td>
                             <td>{{$application->status_application->title}}</td>
                             <td>{{$application->status_work->title}}</td>
                             <td>

@@ -70,13 +70,16 @@ Route::group(['middleware'=>'auth'], function(){
 
         //expert ums
         Route::get('/expert_ums.check/{id}', 'App\Http\Controllers\Employee\Expert_Ums\CheckUmsController')->name('expert_ums.check');
-        Route::post('/expert_ums.success/{id}', 'App\Http\Controllers\Employee\Expert_Ums\SuccessController')->name('expert_ums.success');
+        Route::post('/expert_ums.success/{id}/{survey_id}', 'App\Http\Controllers\Employee\Expert_Ums\SuccessController')->name('expert_ums.success');
         Route::get('/expert_ums.unsuccess/{id}', 'App\Http\Controllers\Employee\Expert_Ums\UnSuccessController')->name('expert_ums.unsuccess');
 
         //session ums
         Route::get('/session_ums.check/{id}', 'App\Http\Controllers\Employee\Session_Ums\CheckSessionUmsController')->name('session_ums.check');
         Route::get('/session_ums.success/{id}', 'App\Http\Controllers\Employee\Session_Ums\SuccessController')->name('session_ums.success');
         Route::get('/session_ums.unsuccess/{id}', 'App\Http\Controllers\Employee\Session_Ums\UnSuccessController')->name('session_ums.unsuccess');
+
+        //Result
+        Route::get('/publish.check/{id}', 'App\Http\Controllers\Publish\CheckPublishController')->name('publish.check');
     });
 
     Route::get('/logout', 'App\Http\Controllers\Auth\LogOutController')->name('logout');

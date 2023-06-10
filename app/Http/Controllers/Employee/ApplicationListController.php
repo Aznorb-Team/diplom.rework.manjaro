@@ -34,7 +34,7 @@ class ApplicationListController extends Controller
         foreach($applications as $key=>$value){
             $ums = Ums_Votes::where('application_id', '=', $value->id)->first();
             if($ums != null)
-                if(DB::table('who_voted_ums')->where('employee_id', '=', auth()->user()->id)->where('ums_vote_id', '=', $ums->id)->first() != null)
+                if(DB::table('who_votes_ums')->where('employee_id', '=', auth()->user()->id)->where('ums_vote_id', '=', $ums->id)->first() != null)
                     $applications->forget($key);
         }
         // $applications = $applications->latest()->paginate(10);

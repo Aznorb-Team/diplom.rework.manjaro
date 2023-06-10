@@ -18,6 +18,6 @@ class Ums_Votes extends Model
     ];
 
     public function employee_vote(){
-        return $this->belongsToMany(User::class, 'who_voted_ris', 'ums_vote_id', 'employee_id');
+        return $this->belongsToMany(User::class, 'who_votes_ums', 'ums_vote_id', 'employee_id');
     }
 }

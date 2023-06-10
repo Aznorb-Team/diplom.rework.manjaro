@@ -257,7 +257,7 @@
 <script>
     document.getElementById('view_teach_mat').onclick = function() {
         let link = document.getElementById('link_teach_mat');
-        window.open('http://diplom.rework/storage/'+link.value).focus();
+        window.open('http://127.0.0.1:8000/storage/'+link.value).focus();
     };
     const download = (path, filename) => {
         // Create a new link

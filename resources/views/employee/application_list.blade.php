@@ -65,7 +65,7 @@
                             @endif
 
                             @if(auth()->user()->role->contains(7))
-                              <td><a href="#"><button class="btn @if($application->employee_id == auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id != auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                              <td><a href="{{route('publish.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id != auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
                             @endif
 
 

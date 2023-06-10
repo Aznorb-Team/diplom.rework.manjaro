@@ -52,7 +52,7 @@ class SuccessController extends Controller
                     $template->setValue('{mode}', $application->mode->title);
                     $template->setValue('{title}', $application->title);
                     $template->setValue('{authors}', $application->authors->implode('-'));
-                    $template->setValue('{direction}', $application->direction);
+                    $template->setValue('{direction}', $application->direction->title);
                     $template->setValue('{pages}', 'Страницы');
                     $template->setValue('{date_today}', 'Сегодняшняя дата');
                     $template->saveAs("file:///home/sergey/srv/http/diplom.rework/public/storage/application/user-{$user->id}/statement_ums.docx");

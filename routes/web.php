@@ -80,6 +80,8 @@ Route::group(['middleware'=>'auth'], function(){
 
         //Result
         Route::get('/publish.check/{id}', 'App\Http\Controllers\Publish\CheckPublishController')->name('publish.check');
+
+        Route::get('/create-zip', 'App\Http\Controllers\CreateZipController')->name('create-zip');
     });
 
     Route::get('/logout', 'App\Http\Controllers\Auth\LogOutController')->name('logout');

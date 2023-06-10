@@ -36,6 +36,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/view.application/{id}', 'App\Http\Controllers\Admin\ViewApplicationController')->name('view.application');
 
         Route::get('/edit.steps', 'App\Http\Controllers\Admin\EditStepsController')->name('edit.steps');
+        Route::get('/edit.forms', 'App\Http\Controllers\Admin\EditFormsController')->name('edit.forms');
     });
     
     Route::group(['middleware'=>'user', 'prefix'=>'user'], function(){

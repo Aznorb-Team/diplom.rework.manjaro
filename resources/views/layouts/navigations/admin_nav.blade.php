@@ -129,7 +129,7 @@
                 </li>
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="layout"></i><span>Редактор</span></a>
                   <ul class="nav-submenu menu-content">
-                    <li><a href="#">Редактор форм</a></li>
+                    <li><a href="{{route('edit.forms')}}">Редактор форм</a></li>
                     <li><a href="{{route('edit.steps')}}">Редактор этапов</a></li>
                     {{-- <li><a href="#">Редактор последовательности этапов</a></li> --}}
                   </ul>

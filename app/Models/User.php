@@ -51,6 +51,9 @@ class User extends Authenticatable
     public function authors_application(){
         return $this->belongsToMany(User::class, 'applications_authors', 'authors_id', 'application_id');
     }
+    public function ris_votes(){
+        return $this->belongsToMany(User::class, 'who_voted_ris', 'employee_id', 'ris_vote_id');
+    }
 
     public function user_application(){
         return $this->belongsTo(Application::class, 'user_id');

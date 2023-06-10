@@ -42,6 +42,10 @@
 <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
 <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
 <script src="{{ asset('assets/js/popover-custom.js') }}"></script>
+<script src="{{ asset('assets/js/form-builder/form-builder-2/form-builder-2.js') }}"></script>
+<script src="{{ asset('assets/js/form-builder/form-builder-2/beautifyhtml.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.ui.min.js') }}"></script>
+<script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
 
 
 {{-- <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script> --}}

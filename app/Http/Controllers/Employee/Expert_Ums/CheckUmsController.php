@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee\Expert_Ums;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\Survey;
 
 class CheckUmsController extends Controller
 {
@@ -13,6 +14,7 @@ class CheckUmsController extends Controller
         $application->status_work_id=2;
         $application->employee_id=auth()->user()->id;
         $application->save();
-        return view('employee.expert_ums.check_ums', ['application'=>$application]);
+        $survey = Survey::where('id', '=', 3)->get()->first();
+        return view('employee.expert_ums.check_ums', ['application'=>$application, 'survey'=>$survey]);
     }
 }

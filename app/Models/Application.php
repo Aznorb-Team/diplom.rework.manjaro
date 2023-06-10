@@ -22,7 +22,8 @@ class Application extends Model
         'teaching_materials_id',
         'anti_plagiarism_id',
         'certificate_of_department_id',
-        'status_work_id'
+        'status_work_id',
+        'ris_statement_id'
     ];
     protected $hidden =[
         'updated_at',
@@ -63,6 +64,12 @@ class Application extends Model
     }
     public function teaching_materials(){
         return $this->hasOne(Teaching_Material::class, 'id', 'teaching_materials_id');
+    }
+    public function ris_statement(){
+        return $this->hasOne(Statement::class, 'id', 'ris_statement_id');
+    }
+    public function ums_statement(){
+        return $this->hasOne(Statement::class, 'id', 'ums_statement_id');
     }
     public function anti_plagiarisms(){
         return $this->hasOne(Anti_Plagiarism::class, 'id', 'anti_plagiarism_id');

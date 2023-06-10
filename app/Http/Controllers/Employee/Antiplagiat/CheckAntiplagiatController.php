@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Employee\Antiplagiat;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
+use Illuminate\Support\Facades\Storage;
 
 class CheckAntiplagiatController extends Controller
 {

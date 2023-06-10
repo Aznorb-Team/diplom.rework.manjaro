@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Application;
 use App\Models\Anti_Plagiarism;
+use App\Models\Statement;
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Collection;
 
 class SuccessController extends Controller
 {
@@ -30,6 +34,32 @@ class SuccessController extends Controller
 
         $application->status_work_id = 1;
         $application->employee_id = NULL;
+
+        //Заявление на РИС 
+        $user = User::where('id', '=', $application->user_id)->first();
+
+        $template = new \PhpOffice\PhpWord\TemplateProcessor("file:///home/sergey/srv/http/diplom.rework/public/storage/statements/ris.docx");
+        $template->setValue('{name}', $user->surname.' '.$user->name.' '.$user->patronymic);
+        $template->setValue('{job_title}', "Должность");
+        $template->setValue('{chair}', 'Кафедра');
+        $template->setValue('{mode}', $application->mode->title);
+        $template->setValue('{title}', $application->title);
+        $template->setValue('{authors}', $application->authors->implode('-'));
+        $template->setValue('{direction}', $application->direction);
+        $template->setValue('{pages}', 'Страницы');
+        $template->setValue('{date_of_issue}', 'Год выпуска');
+        $template->setValue('{date_today}', 'Сегодняшняя дата');
+        $template->saveAs("file:///home/sergey/srv/http/diplom.rework/public/storage/application/user-{$user->id}/statement_ris.docx");
+
+        $link_statement = "file:///home/sergey/srv/http/diplom.rework/public/storage/application/user-{$user->id}/statement_ris.docx";
+
+        $state = Statement::create([
+            'link' => "application/user-{$user->id}/statement_ris.docx",
+        ]);
+        $state->save();
+
+        $application->ris_statement_id = $state->id;
+        
         $application->save();
 
         return redirect('user/antiplagiat.application_list');

@@ -93,6 +93,23 @@
                                 </div>
                             </div>
 
+                            <label class="col-sm-3 col-form-label">Заявление на проверку</label>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="link_statement" value="{{$application->ris_statement->link}}" hidden/>
+                                        <input type="button" class="btn btn-outline-primary" id="view_statement" value="Показать заявление на проверку"/><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <input type="button" name="download" id="download_statement" class="btn btn-outline-primary" value="Скачать заявление на проверку"/>
+                                    </div>
+                                </div>
+                            </div>
+
                             {{-- <label class="col-sm-3 col-form-label">Рецензии</label>
                             @foreach()
                                 <div class="row">
@@ -213,7 +230,7 @@
 <script>
     document.getElementById('view_teach_mat').onclick = function() {
         let link = document.getElementById('link_teach_mat');
-        window.open('http://diplom.rework/storage/'+link.value).focus();
+        window.open('http://127.0.0.1:8000/storage/'+link.value).focus();
     };
     const download = (path, filename) => {
         // Create a new link
@@ -232,25 +249,35 @@
     }; 
     document.getElementById('download_teach_mat').onclick = function() {
         let link = document.getElementById('link_teach_mat');
-        download('http://diplom.rework/storage/'+link.value, 'met_mat.doc');
+        download('http://127.0.0.1:8000/storage/'+link.value, 'met_mat.doc');
     };
 
     document.getElementById('view_cert_dep').onclick = function() {
         let link = document.getElementById('link_cert_dep');
-        window.open('http://diplom.rework/storage/'+link.value).focus();
+        window.open('http://127.0.0.1:8000/storage/'+link.value).focus();
     };
     document.getElementById('download_cert_dep').onclick = function() {
         let link = document.getElementById('link_cert_dep');
-        download('http://diplom.rework/storage/'+link.value, 'cert_dep.pdf');
+        download('http://127.0.0.1:8000/storage/'+link.value, 'cert_dep.pdf');
     };
 
     document.getElementById('view_antiplagiat').onclick = function() {
         let link = document.getElementById('link_antiplagiat');
-        window.open('http://diplom.rework/storage/'+link.value).focus();
+        window.open('http://127.0.0.1:8000/storage/'+link.value).focus();
     };
     document.getElementById('download_antiplagiat').onclick = function() {
         let link = document.getElementById('link_antiplagiat');
-        download('http://diplom.rework/storage/'+link.value, 'antiplagiat.pdf');
+        download('http://127.0.0.1:8000/storage/'+link.value, 'antiplagiat.pdf');
+    };
+
+    document.getElementById('download_statement').onclick = function() {
+        let link = document.getElementById('link_statement');
+        download('http://127.0.0.1:8000/storage/'+link.value, 'ris_statement.pdf');
+    };
+
+    document.getElementById('view_statement').onclick = function() {
+        let link = document.getElementById('link_statement');
+        window.open('http://127.0.0.1:8000/storage/'+link.value).focus();
     };
 </script>
 @endsection

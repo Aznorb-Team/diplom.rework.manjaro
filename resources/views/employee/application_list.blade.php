@@ -51,7 +51,9 @@
                             @endif
 
                             @if(auth()->user()->role->contains(4))
+                              @if($application)
                               <td><a href="{{route('session_ris.check', ['id' => $application->id])}}"><button class="btn @if($application->employee_id != auth()->user()->id) btn-primary @else btn-warning @endif" type="button">@if($application->employee_id == auth()->user()->id) Доработать @else Взять в работу @endif</button></a></td>
+                              @endif()
                             @endif
 
                             @if(auth()->user()->role->contains(5))

@@ -137,6 +137,7 @@
                     </div>
                   </div>
                   <form action="{{ route('create-zip') }}">
+                    <input type="text" class="form-control" name="id_user" id="id_user" value="{{$application->user_id}}" hidden/>
                     <input type="text" class="form-control" name="link_teach_mat" id="link_teach_mat" value="{{$application->teaching_materials->link}}" hidden/>
                     <input type="text" class="form-control" name="link_antiplagiat" id="link_antiplagiat" value="{{$application->anti_plagiarisms->link}}" hidden/>
                     <input type="text" class="form-control" name="link_cert_dep" id="link_cert_dep" value="{{$application->certificate_of_departments->link}}" hidden/>

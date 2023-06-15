@@ -7,13 +7,31 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid dashboard-default-sec">
             <div class="row">
+            <div class="build-wrap"></div>
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
                             <h5>Панель редактирование форм</h5>
                             <span></span>
+                            <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="col-form-label">Формы</label>
+                                            <select
+                                                class="form-select input-air-primary"
+                                                tabindex="-1" aria-hidden="true" name="form" id="form_select" required>
+                                                @foreach ($stages as $stage)
+                                                        <option value="{{ $stage->id }}">{{ $stage->form->title }}
+                                                            </option>
+                                                @endforeach
+                                            </select>
+                                            {{-- <span class="select2 select2-container select2-container--default select2-container--focus" dir="ltr" style="width: 1402px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> --}}
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <form>
+                        <form action="{{ route('save.form') }}" method="post">
+                        @csrf
                             <div class="card-body form-builder">
                                 <div class="form-builder-column">
                                     <div class="row">
@@ -42,7 +60,7 @@
                                                 </div>
                                                 <div>
                                                     <nav class="navbar navbar-expand-md p-0">
-                                                        <form class="form-inline">
+                                                        <div class="form-inline">
                                                             <div class="me-2">
                                                                 <select class="btn form-control b-light" id="n-columns">
                                                                     <option value="1">1 Column</option>
@@ -52,7 +70,7 @@
                                                             <button class="btn btn-primary copy-btn" id="copy-to-clipboard"
                                                                 type="submit" data-clipboard-text="testing"
                                                                 data-bs-original-title="" title="">Copy HTML</button>
-                                                        </form>
+                                                        </div>
                                                     </nav>
                                                 </div>
                                             </div>
@@ -61,13 +79,13 @@
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade active show" id="pills-input" role="tabpanel"
                                                     aria-labelledby="pills-input-tab">
-                                                    <form class="theme-form">
+                                                    <div class="theme-form">
                                                         <div class="mb-3 draggable ui-draggable ui-draggable-handle">
                                                             <label for="input-text-2">Text Input</label>
                                                             <input class="form-control btn-square" id="input-text-2"
                                                                 type="email" placeholder="Enter email"
                                                                 data-bs-original-title="" title="">
-                                                            <p class="help-block">Example block-level help text here.</p>
+                                                            <p class="help-block">Haha block-level help text here.</p>
                                                         </div>
                                                         <hr>
                                                         <div class="mb-3 draggable ui-draggable ui-draggable-handle">
@@ -137,11 +155,11 @@
                                                             </div>
                                                             <p class="help-block">Example block-level help text here.</p>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="pills-radcheck" role="tabpanel"
                                                     aria-labelledby="pills-radcheck-tab">
-                                                    <form class="theme-form">
+                                                    <div class="theme-form">
                                                         <div class="mb-3 draggable ui-draggable ui-draggable-handle">
                                                             <label>Inline checkbox</label>
                                                             <div class="col">
@@ -218,11 +236,11 @@
                                                             </div>
                                                             <p class="help-block">Example block-level help text here.</p>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="pills-select" role="tabpanel"
                                                     aria-labelledby="pills-select-tab">
-                                                    <form class="theme-form">
+                                                    <div class="theme-form">
                                                         <div class="mb-3 draggable ui-draggable ui-draggable-handle">
                                                             <label for="formcontrol-select1">Example select</label>
                                                             <select class="form-control btn-square"
@@ -249,11 +267,11 @@
                                                             </select>
                                                             <p class="help-block">Example block-level help text here.</p>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="pills-button" role="tabpanel"
                                                     aria-labelledby="pills-button-tab">
-                                                    <form class="theme-form">
+                                                    <div class="theme-form">
                                                         <div class="mb-3 draggable ui-draggable ui-draggable-handle">
                                                             <label class="m-r-10">Single Button</label><br>
                                                             <button class="btn btn-primary active" type="button"
@@ -273,7 +291,7 @@
                                                                 data-bs-original-title="">Secondary</button>
                                                             <p class="help-block">Example block-level help text here.</p>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,16 +301,7 @@
 
                                                 <div class="form-body row form-builder-2">
                                                     <div class="col-md-12 droppable sortable ui-droppable ui-sortable">
-                                                        <div class="mb-3 draggable ui-draggable ui-draggable-handle dropped"
-                                                            style="position: static;">
-                                                            <label for="input-text-1">Text Input</label>
-                                                            <input class="form-control btn-square" id="input-text-1"
-                                                                type="email" placeholder="Enter email"
-                                                                data-bs-original-title="" title="">
-                                                            <p class="help-block">Example block-level help text here.</p>
-                                                            <p class="tools"> <a class="edit-link">Edit HTML</a><a> |
-                                                                </a><a class="remove-link">Remove</a></p>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="col-md-6 droppable sortable ui-droppable ui-sortable"
                                                         style="display: none;"></div>
@@ -304,11 +313,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <input name="form_id" id="form_id" value="{{$stages[0]->id}}" hidden>
+                            <input name="html_code" id="html-code" value="" hidden>
+                            <div class="card-footer text-end">
+                                <button class="btn btn-primary" type="submit" id="save_but" disabled>Сохранить</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- Container-fluid Ends-->
     </div>
 
@@ -324,4 +339,13 @@
     </footer>
     </div>
     </div>
+    <script>
+        document.getElementById("copy-to-clipboard").onclick = function() {document.getElementById("save_but").disabled = false;};
+
+        var select = document.getElementById('form_select');
+        input = document.getElementById('form_id');
+        select.addEventListener('change',function(){
+            input.value = select.value;
+        });
+    </script>
 @endsection

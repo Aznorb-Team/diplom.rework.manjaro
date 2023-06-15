@@ -10,4 +10,12 @@ class Field extends Model
     use HasFactory;
 
     protected $table = 'fields';
+
+    protected $fillable = [
+        'title',
+        'description',
+        'field_type_id',
+        'form_id',
+        'order_num',
+    ];
 }

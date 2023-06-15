@@ -26,6 +26,7 @@ $(document).ready(function() {
             $copy.find("." + c).removeClass(c);
         })
         var html = html_beautify($copy.html());
+        $("#html-code").val(html_beautify($copy.html()));
         $copy.remove();
 
         $modal = get_modal(html).modal("show");

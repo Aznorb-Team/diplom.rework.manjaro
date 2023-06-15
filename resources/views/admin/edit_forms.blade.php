@@ -346,6 +346,9 @@
         input = document.getElementById('form_id');
         select.addEventListener('change',function(){
             input.value = select.value;
+
+
+
         });
     </script>
 @endsection

@@ -10,13 +10,13 @@ class SaveFormController extends Controller
 {
     public function __invoke(Request $request){
 
-        dd($request->form_id);
+        // dd($request->html_code);
 
         $dom = new Dom;
         $dom->loadStr($request->html_code);
-        $a = $dom->find('input');
+        $a = $dom->find('button');
         foreach($a as $d){
-            dd($d->type);
+            dd($d->value);
         }
         
 
